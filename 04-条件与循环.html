@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="jj">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{todo.text}}
+    </li>
+  </ol>
+</div>
+</body>
+<script type="text/javascript">
+  var app4 = new Vue({
+    el: '#app-4',
+    data: {
+      todos: [
+        {text: '1'},
+        {text: '2'},
+        {text: '3'}
+      ]
+    }
+  })
+</script>
+</html>

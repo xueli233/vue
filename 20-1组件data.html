@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+  <!--1.警告:data必须是函数-->
+  <div id="app">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+  </div>
+</body>
+<script type="text/javascript">
+  Vue.component('simple-counter',{
+    template: '<button v-on:click="counter += 1">{{ counter }} </button>',
+    data: function () {
+      //return data
+      //数据不共享
+      return {
+        counter: 0
+      }
+    }
+  })
+  new Vue({
+    el: '#app',
+    data: {
+
+    }
+  })
+</script>
+</html>

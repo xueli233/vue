@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<!--1.模板内放太多计算会让模板过重,且难维护-->
+<div id="example">
+  <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  <p id="demo" >value=" {{ fullName }}" </p>
+</div>
+</body>
+<script type="text/javascript">
+//  var vm = new Vue({
+//    el: '#example',
+//    data: {
+//      message: 'Hello'
+//    },
+//    //  2.methods方法可以达到相同的效果,但是它不会产生缓存
+//    //  当计算是依赖的时候,或者过大时,会降低性能
+//    computed: {
+//      reversedMessage: function () {
+//        return this.message.split('').reverse().join('');
+//      }
+//    }
+//  })
+  // 3.watched 可以达到效果
+//  var vm1 = new Vue ({
+//    el: '#demo',
+//    data: {
+//      firstName: 'Foo',
+//      lastName: 'Bar',
+//      fullName:'Foo Bar'
+//    },
+//    watch: {
+//      firstName: function (val) {
+//        this.fullName = val + ' ' + this.lastName
+//      },
+//      lastName: function (val) {
+//        this.fullName = this.firstName + ' ' + val
+//      }
+//    }
+//  })
+//  4.setter
+  var vm =  new Vue({
+    el: '#demo',
+    data: {
+      firstName : 'Foo',
+      lastName: 'Bar',
+      fullName: 'Foo Bar'
+    },
+    computed: {
+      get: function () {
+        return this.firstName + ' ' + this.lastName
+      },
+      set: function (newValue) {
+        var name = newValue.split(' ')
+        this.firstName = name[0]
+        this.lastName = name[name.length-1]
+      }
+    }
+  })
+</script>
+</html>

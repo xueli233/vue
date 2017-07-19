@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--1.单个复选-->
+  <input type="checkbox" id="checkbox" v-model="checked">
+  <label for="checkbox">{{ checked }}</label>
+  <!--2.多个复选-->
+  <input type="checkbox" value="Jack" v-model="checkedNames" >
+  <label for="jack">Jack</label>
+  <input type="checkbox" value="john" v-model="checkedNames" >
+  <label for="jack">john</label>
+  <input type="checkbox" value="Mike" v-model="checkedNames" >
+  <label for="jack">Mike</label><br/>
+  <span>Checked name: {{ checkedNames }}</span>
+</div>
+</body>
+<script type="text/javascript">
+ var vm = new Vue({
+   el: '#app',
+   data: {
+     checked: '',
+     checkedNames: []
+   }
+ })
+</script>
+</html>

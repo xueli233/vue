@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+</head>
+<body>
+  <!--1.文本-->
+  <span>Message: {{ msg }}</span>
+  <!--2.一次性插值-->
+  <span v-once>This never change: {{ msg }}</span>
+  <!--3.纯html-->
+  <div v-html="rawHtml"></div>
+  <!--4.不能直接在属性中使用-->
+  <!--对布尔值有效,但false时该属性会被移除-->
+  <div v-bind:id="dynamicId"></div>
+  <button v-bind:disabled="isButtonDisabled">Button</button>
+  <!--5.使用JavaScript表达式-->
+  {{ number +1 }}
+  {{ ok ? "yes" : 'No' }}
+  {{ message.split('').reverse().join('') }}
+  <div v-bind: id="'list-'+id"></div>
+  <!--这是语句,不是表达式-->
+  {{ var a = 1 }}
+  <!--流控制也不会生效,请使用三元表达式-->
+  {{ if (ok) {return message }}
+  <!--6.模板表达式只能被放到沙盒中,只能访问全局白名单,如:Math,Data,不能访问用户定义变量-->
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

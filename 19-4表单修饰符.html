@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<!--1.在默认情况下， v-model 在 input 事件中同步输入框的值与数据
+(除了 上述 IME 部分)，但你可以添加一个修饰符 lazy ，从而转变为在 change 事件中同步：-->
+  <input v-model.lazy = "msg">
+ <!--2.自动将用户的输入值转为 Number 类型-->
+<input type="text" v-model.number = "age" type = "number">
+  <!--3.动过滤用户输入的首尾空格-->
+  <input v-model.trim="msg" >
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

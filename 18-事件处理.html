@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <button @click="counter +=1">增加 1</button>
+  <p>这个按钮被点击了 {{ counter }} 次</p>
+</div>
+</body>
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    }
+  })
+</script>
+</html>

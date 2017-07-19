@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+  <!--1.v-for 指令需要以 item in items 形式的特殊语法，
+   items 是源数据数组并且 item 是数组元素迭代的别名。-->
+  <ul id="app">
+    <li v-for="item in items">
+      {{ item.message }}
+    </li>
+  <!--2.在 v-for 块中，我们拥有对父作用域属性的完全访问权限。
+   v-for 还支持一个可选的第二个参数为当前项的索引。-->
+    <li v-for="(item, index) in items">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+    <!--3.对象迭代-->
+    <ul class="demo">
+      <li v-for="(index, value,key) in object">
+        index:{{ index }},value:{{ value }}, key:{{ key }}
+      </li>
+    </ul>
+    <!--4.-for 也可以取整数。-->
+    <div><span v-for="n in 10"> {{ n }}</span></div>
+    <!--5 2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的-->
+    <input
+            v-model="newTodoText"
+            v-on:keyup.enter="addNewTodo"
+            placeholder="Add a todo"
+    >
+    <ul>
+      <li
+              is="todo-item"
+              v-for="(todo, index) in todos"
+              v-bind:key="index"
+              v-bind:title="todo"
+              v-on:remove="todos.splice(indx, 1)"
+      ></li>
+    </ul>
+  </ul>
+</body>
+<script type="text/javascript">
+  Vue.component('todo-item', {
+    template:'\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">X</button>\
+      </li>\
+    ',
+    props: ['title']
+  })
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      parentMessage: 'parent',
+      newTodoText: '',
+      todos:[
+          'Do this dishes',
+          'Take out thie trash',
+          'Mow the lawn'
+      ],
+      items: [
+        { message: 'Foo' },
+        { message: 'Bar' }
+      ],
+      object: {
+        firstName: 'john',
+        lastName: 'Doe',
+        age: 30
+      }
+    },
+    methods: {
+      addNewTodo: function () {
+        this.todos.push(this.newTodoText)
+        this.newTodoText = ''
+      }
+    }
+  })
+</script>
+</html>

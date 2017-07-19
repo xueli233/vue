@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+  <div id="example"></div>
+</body>
+<script type="text/javascript">
+ //1.Vue实例都可代理data对象的所有属性
+ //实例后新增的属性,不会有效果
+//  var data = { a: 1 }
+//  var vm= new Vue({
+//    data: data
+//  })
+//  console.log(vm.a === data.a) //true
+//  vm.a = 2
+//  console.log(data.a);
+//  data.a = 3
+//  console.log(vm.a);
+ // 2.实用属性与方法
+  var data = { a : 1 };
+  var vm = new Vue({
+    el: '#example',
+    data: data
+  })
+
+  console.log(vm.$data === data);
+//  只在存在这个id时才为true
+  console.log(vm.$el == document.getElementById('example'))
+  vm.$watch('a', function (newVal, oldVal) {
+    //这个回调将在 'vm.a'改变后调用
+//    不能使用箭头函数,因为它this不指向Vue实例,而显示this.myNethod未定义
+  })
+</script>
+</html>

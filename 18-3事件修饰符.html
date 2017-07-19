@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<!-- 阻止单击事件冒泡 -->
+<a @click.stop = 'doThis'></a>
+<!-- 提交事件不再重载页面 -->
+<form @submit.prevent="onSubmit"></form>
+<!-- 修饰符可以串联  -->
+<a @click.stop.preent = "doThat"></a>
+<!-- 只有修饰符 -->
+<form @submit.prevent></form>
+<!-- 添加事件侦听器时使用事件捕获模式 -->
+<div @click.xapture = "doThis"></div>
+<!-- 只当事件在该元素本身（比如不是子元素）触发时触发回调 -->
+<div @click.self = "doThat">...</div>
+<!--2.1.4 新增  点击事件将只会触发一次 -->
+<a @click.once="toThis"></a>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

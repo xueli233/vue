@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+</head>
+<body>
+  <!--1.当表达式值改变时,行为应用到DOM上,单一js表达式,除了v-for-->
+  <p v-if="seen">Now you see me</p>
+  <!--2.参数: 将href属性与url绑定-->
+  <a v-bind:href="url"></a>
+  <!--3.监听事件-->
+  <a v-on:click="doSomething" href=""></a>
+  <!--4.修饰符 . 以特殊的方式绑定-->
+  <!--.prevent => event.preventDefault-->
+  <form v-on:submit.prevent="onSubmit"></form>
+//  <!--5.过滤器(可以用管道符串联)可接收参数,为第2+参数,文本格式化-->
+  {{ message | capitalize }}
+  <div v-bind:id="rawId | formatId( 'arg1', arg2 )"></div>
+  <!--6.v-bind:缩写-->
+  <a :href="url"></a>
+  <!--7.v-on缩写-->
+  <a @href="doSomething"></a>
+</body>
+<script type="text/javascript">
+//  5.过滤器
+  new Vue({
+    filters: {
+      capitalize:function (value) {
+        if(!value)return
+        value = value.toString()
+        return value.chatAt(0).toUpperCase() + value.slice(1)
+      }
+    }
+  })
+
+</script>
+</html>

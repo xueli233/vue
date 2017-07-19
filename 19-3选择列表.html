@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+  <!--1.单选列表-->
+  <div id="app">
+    <select v-model="selected">
+      <option disabled value="">请选择</option>
+      <option >A</option>
+      <option >B</option>
+      <option >C</option>
+    </select>
+    <span>selected: {{ selected }}</span>
+  </div>
+  <!--2.多选列表-->
+  <div id="app1">
+    <select v-model="selected" multiple style="width: 50px">
+      <option >A</option>
+      <option >B</option>
+      <option >C</option>
+    </select>
+    <span>selected: {{ selected }}</span>
+  </div>
+  <!--3.动态选项-->
+  <!--radio:picked,checkbox:toggle,selected:-->
+  <div id="app2">
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <span>selected: {{ selected }}</span>
+  </div>
+</body>
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      selected: ''
+    }
+  })
+  var vm1 = new Vue({
+    el: '#app1',
+    data: {
+      selected: []
+    }
+  })
+  var vm2 = new Vue({
+    el: '#app2',
+    data: {
+      selected: 'A',
+      options: [
+        { text: 'one', value: 'A'},
+        { text: 'Tow', value: 'B'},
+        { text: 'Three', value: 'C'}
+      ]
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <child my-message="hello!"></child>
+</div>
+</body>
+<script type="text/javascript">
+//  1.HTML 特性是不区分大小写的。所以，当使用的不是字符串模版，camelCased (驼峰式) 命名的 prop 需要转换为相对应的 kebab-case (短横线隔开式) 命
+  Vue.component('child',{
+    props:['myMessage'],
+    template:  '<span>{{ myMessage }}</span>'
+  })
+  new Vue({
+    el: '#app'
+  })
+</script>
+</html>
